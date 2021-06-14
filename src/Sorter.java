@@ -49,7 +49,17 @@ public class Sorter {
                     result.set(intersectionNumber, null);
                 }
             }
-            result.get(groupNumber).add(line);
+
+            List<String> tempCollection = result.get(groupNumber);
+            boolean hasDuplicate = false;
+            for (String elem : tempCollection) {
+                if (line.equals(elem)) {
+                    hasDuplicate = true;
+                    break;
+                }
+            }
+            if (!hasDuplicate)
+                result.get(groupNumber).add(line);
         }
         result.removeAll(Collections.singleton(null));
         System.out.printf("Sorting execution time: %d ms\n", System.currentTimeMillis() - startTime);

@@ -16,15 +16,13 @@ public class App {
                     .filter(list -> list.size() > 1)
                     .sorted(new CollectionSizeComparator().reversed())
                     .forEach(list -> {
+                        StringBuilder sb = new StringBuilder();
                         for (String line : list) {
-                            try {
-                                writer.write(line);
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
+                            sb.append(line).append("\n");
                         }
+                        sb.append("\n");
                         try {
-                            writer.write("\n");
+                            writer.write(String.valueOf(sb));
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
