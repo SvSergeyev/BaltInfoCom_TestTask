@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Sorter {
     public List<List<String>> sort(List<String> unsortedList) {
@@ -62,6 +63,7 @@ public class Sorter {
                 result.get(groupNumber).add(line);
         }
         result.removeAll(Collections.singleton(null));
+        System.out.printf("Found %s groups\n", (int) result.stream().filter(list -> list.size() > 1).count());
         System.out.printf("Sorting execution time: %d ms\n", System.currentTimeMillis() - startTime);
         return result;
     }

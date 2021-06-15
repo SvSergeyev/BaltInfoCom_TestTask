@@ -6,9 +6,14 @@ import java.util.List;
 
 public class Reader {
     private final List<String> lines = new ArrayList<>();
+    private final String fileName;
+
+    public Reader(String fileName) {
+        this.fileName = fileName;
+    }
 
     public List<String> read() {
-        try (BufferedReader reader = new BufferedReader(new FileReader("lng.csv"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 if (line.contains("\"")) {

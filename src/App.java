@@ -5,7 +5,11 @@ import java.util.List;
 
 public class App {
     public static void main(String[] args) {
-        List<List<String>> collection = new Sorter().sort(new Reader().read());
+
+        long start = System.currentTimeMillis();
+
+        List<List<String>> collection = new Sorter().sort(new Reader("lng.csv").read());
+//        List<List<String>> collection = new Sorter().sort(new Reader("lng-big.csv").read());
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("sorted_list.csv"))) {
             long total = collection.stream().filter(list -> list.size() > 1).count();
@@ -33,5 +37,7 @@ public class App {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        System.out.printf("Execution time of all methods of the program: %s\n", System.currentTimeMillis() - start);
+
     }
 }
