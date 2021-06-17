@@ -9,7 +9,6 @@ public class App {
         long start = System.currentTimeMillis();
 
         List<List<String>> collection = new Sorter().sort(new Reader("lng.csv").read());
-//        List<List<String>> collection = new Sorter().sort(new Reader("lng-big.csv").read());
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("sorted_list.csv"))) {
             long total = collection.stream().filter(list -> list.size() > 1).count();

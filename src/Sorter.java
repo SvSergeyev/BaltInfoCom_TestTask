@@ -56,7 +56,7 @@ public class Sorter {
                 result.get(groupNumber).add(line);
         }
         result.removeIf(Objects::isNull);
-        System.out.printf("Found %s groups\n", (int) result.stream().filter(list -> list.size() > 1).count());
+        System.out.printf("Found %d groups\n", (int) result.stream().filter(list -> list.size() > 1).count());
         System.out.printf("Sorting execution time: %d ms\n", System.currentTimeMillis() - startTime);
         return result;
     }
